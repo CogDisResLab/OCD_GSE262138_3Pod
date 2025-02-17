@@ -1,4 +1,4 @@
-# OCD v CTRL DLPFC
+# ED v CTRL DLPFC
 
 library(tidyverse)
 library(edgeR)
@@ -8,7 +8,7 @@ counts_file <- file.path("data", "GSE262138_Sample_Counts.csv")
 metadata_file <- file.path("data", "GSE262138_Sample_Metadata.csv")
 
 metadata <- read_csv(metadata_file) |>
-  filter(Diagnosis %in% c("CTRL", "OCD"), Tissue == "DLPFC")
+  filter(Diagnosis %in% c("CTRL", "ED"), Tissue != "DLPFC")
 
 counts <- read_csv(counts_file) |>
   column_to_rownames("Gene_Symbol") |>
@@ -28,6 +28,6 @@ out_filtered <- process_dge(dge_filtered, design_matrix, num_genes = 1000)
 out_filtered$complete_table |> 
   rownames_to_column("gene_name") |> 
   select(gene_name, logFC, P.Value = PValue) |>
-  write_csv("results/ocd_vs_control_dlpfc.csv")
+  write_csv("results/ed_vs_control_caudate.csv")
 
-save(out_filtered, file = "results/ocd_vs_control_dlpfc.RData")
+save(out_filtered, file = "results/ed_vs_control_caudate.RData")

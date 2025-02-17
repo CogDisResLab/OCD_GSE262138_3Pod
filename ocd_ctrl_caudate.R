@@ -25,8 +25,9 @@ dge_filtered <- dge[keep, , keep.lib.sizes = FALSE]
 
 out_filtered <- process_dge(dge_filtered, design_matrix, num_genes = 1000)
 
-out_filtered$complete_table %>%
-  rownames_to_column("gene_name") %>%
+out_filtered$complete_table |> 
+  rownames_to_column("gene_name") |> 
+  select(gene_name, logFC, P.Value = PValue) |>
   write_csv("results/ocd_vs_control_caudate.csv")
 
 save(out_filtered, file = "results/ocd_vs_control_caudate.RData")
