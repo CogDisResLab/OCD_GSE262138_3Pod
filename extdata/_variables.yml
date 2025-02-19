@@ -12,6 +12,14 @@ data:
         group1: "OCD - Caudate"
         group2: "CTRL - Caudate"
         file: "../results/ocd_vs_control_caudate.csv"
+    - 
+        group1: "ED - DLPFC"
+        group2: "CTRL - DLPFC"
+        file: "../results/ed_vs_control_dlpfc.csv"
+    - 
+        group1: "ED - Caudate"
+        group2: "CTRL - Caudate"
+        file: "../results/ed_vs_control_caudate.csv"
 ###Stable Assets
 humanmap: "assets/HGNChelper_currentHumanMap_2023-05-06.csv"
 hgnc: "assets/hgnc_complete_set_2023-05-06.csv"
